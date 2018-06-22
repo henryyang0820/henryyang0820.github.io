@@ -324,7 +324,7 @@ Changes not staged for commit:
 
 no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
 </code></pre></li>
-<li>git status命令可以让我们时刻掌握仓库当前的状态，上面的命令输出告诉我们，文件被修改过了，但还没有准备提交的修改。<pre><code>git add 质量测试中心工作计划及总结.xls
+<li>git status命令可以让我们时刻掌握仓库当前的状态，上面的命令输出告诉我们，文件被修改过了，但还没有准备提交的修改。<pre><code>git add weeklyReport.xls
 </code></pre>将weeklyReport.xlsx加入git的版本管理（此命令可以用于添加任意文件到git的管理）</li>
 <li><p>同样没有任何输出。在执行第二步git commit之前，我们再运行git status看看当前仓库的状态：</p>
 <pre><code>On branch master
@@ -335,7 +335,7 @@ Changes to be committed:
 
 modified:               &quot;\350\264\250\351\207\217\346\265\213\350\257\225\344\270\255\345\277\203\345\267\245\344\275\234\350\256\241\345\210\222\345\217\212\346\200\273\347\273\223.xls&quot;
 </code></pre></li>
-<li><p>git status告诉我们，将要被提交的修改包括 质量测试中心工作计划及总结.xls，下一步，就可以放心地提交了：<br>使用git commit -m “提交时输入的文字”</p>
+<li><p>git status告诉我们，将要被提交的修改包括 weeklyReport.xls，下一步，就可以放心地提交了：<br>使用git commit -m “提交时输入的文字”</p>
 <pre><code>git commit -m &quot;某某某提交周报&quot;
 [master e475afc] 某某某提交周报
  1 file changed, 1 insertion(+)

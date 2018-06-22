@@ -88,7 +88,7 @@
 <meta property="og:description" content="git的简单操作与周报提交 让测试组成员熟悉git 周报的提交  流程默认已经安装好了git，开通企业gitlab  在希望保存此周报项目的路径鼠标右键，打开Git Bash Here 在git bash输入下方命令，建立gitlab周报项目的本地仓库：这时可能需要输入gitlab账户名和密码git clone http://172.16.250.242:8082/yangxiaolong/wee">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://thumbnail0.baidupcs.com/thumbnail/44c45370bf66953dab0259d64a27d885?fid=2753268065-250528-30672624538947&time=1529647200&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-ruhlNKzNw1XeTJuRgg4vSMnEqfM%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=4003638769655179253&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video">
-<meta property="og:updated_time" content="2018-06-22T08:19:47.346Z">
+<meta property="og:updated_time" content="2018-06-22T08:24:23.102Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="周报提交与git操作">
 <meta name="twitter:description" content="git的简单操作与周报提交 让测试组成员熟悉git 周报的提交  流程默认已经安装好了git，开通企业gitlab  在希望保存此周报项目的路径鼠标右键，打开Git Bash Here 在git bash输入下方命令，建立gitlab周报项目的本地仓库：这时可能需要输入gitlab账户名和密码git clone http://172.16.250.242:8082/yangxiaolong/wee">
@@ -326,7 +326,7 @@ Changes not staged for commit:
 
 no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
 </code></pre></li>
-<li>git status命令可以让我们时刻掌握仓库当前的状态，上面的命令输出告诉我们，文件被修改过了，但还没有准备提交的修改。<pre><code>git add 质量测试中心工作计划及总结.xls
+<li>git status命令可以让我们时刻掌握仓库当前的状态，上面的命令输出告诉我们，文件被修改过了，但还没有准备提交的修改。<pre><code>git add weeklyReport.xls
 </code></pre>将weeklyReport.xlsx加入git的版本管理（此命令可以用于添加任意文件到git的管理）</li>
 <li><p>同样没有任何输出。在执行第二步git commit之前，我们再运行git status看看当前仓库的状态：</p>
 <pre><code>On branch master
@@ -337,7 +337,7 @@ Changes to be committed:
 
 modified:               &quot;\350\264\250\351\207\217\346\265\213\350\257\225\344\270\255\345\277\203\345\267\245\344\275\234\350\256\241\345\210\222\345\217\212\346\200\273\347\273\223.xls&quot;
 </code></pre></li>
-<li><p>git status告诉我们，将要被提交的修改包括 质量测试中心工作计划及总结.xls，下一步，就可以放心地提交了：<br>使用git commit -m “提交时输入的文字”</p>
+<li><p>git status告诉我们，将要被提交的修改包括 weeklyReport.xls，下一步，就可以放心地提交了：<br>使用git commit -m “提交时输入的文字”</p>
 <pre><code>git commit -m &quot;某某某提交周报&quot;
 [master e475afc] 某某某提交周报
  1 file changed, 1 insertion(+)
