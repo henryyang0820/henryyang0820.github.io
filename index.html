@@ -229,6 +229,159 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/25/my-git2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/25/my-git2/" itemprop="url">my_git2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-25T11:42:45+08:00">
+                2018-06-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#解决git冲突问题</p>
+<p>在提交测试组周报的过程中，由于git没有svn锁的机制，成员a在pull后，修改文件commit，接着push,报错如下：</p>
+<pre><code>$ git push
+To 172.16.250.242:yangxiaolong/weeklyReport.git
+ ! [rejected]        master -&gt; master (non-fast-forward)
+error: failed to push some refs to &apos;git@172.16.250.242:yangxiaolong/weeklyReport.git&apos;
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: &apos;git pull ...&apos;) before pushing again.
+hint: See the &apos;Note about fast-forwards&apos; in &apos;git push --help&apos; for details.
+</code></pre><p>原因是在成员a push之前有别的成员b已经有了新的push，此时成员a对于同一个文件的修改发生了冲突问题<br>要解决这个问题，我们需要把文件回退到之前的版本（回退意味着此次修改内容丢失，请做好备份），重新pull，编辑文件后commit 接着push</p>
+<p>使用git log 查看日志</p>
+<pre><code>$ git log
+commit 6a8fd82942dc32805fe156f8800d4398f9330ea4 (HEAD -&gt; master)
+Author: “henryyang0820git config --global user.email “y1045033116@qq.com &lt;1045033116@qq.com&gt;
+Date:   Mon Jun 25 10:47:00 2018 +0800
+
+杨晓龙提交周报
+
+commit 50b5dfedbcedff257e2b2cf6ccd047975a146fef
+Author: chengbeiyang &lt;chengbeiyang@bravolinks.cn&gt;
+Date:   Mon Jun 25 10:18:09 2018 +0800
+
+chengbeiyang
+
+commit 053ee3c355fab2e4c0a6d9b0f379ff5e1625fa91 (origin/real)
+Author: 翟松方 &lt;zhaisongfang@bravolinks.cn&gt;
+Date:   Mon Jun 25 10:08:13 2018 +0800
+
+scm20180625
+</code></pre><p>查看日志HEAD -&gt; master, 得知当前的commit需要回退一个版本</p>
+<pre><code>git reset --hard HEAD^
+在Git中，用HEAD表示当前版本，上一个版本就是HEAD^，上上一个版本就是HEAD^^，依次类推
+</code></pre><p>到这里，我们的文件退回到了上一版本，冲突得到解决。使用git pull拉取最新的版本，接着进行正常的编辑文件，add-commit-push来提交周报即可。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/22/weekly-Report/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -442,7 +595,7 @@ From http://172.16.250.242:8082/yangxiaolong/weeklyReport
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
