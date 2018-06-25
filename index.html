@@ -248,7 +248,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/06/25/my-git2/" itemprop="url">my_git2</a></h1>
+                <a class="post-title-link" href="/2018/06/25/my-git2/" itemprop="url">解决冲突</a></h1>
         
 
         <div class="post-meta">
@@ -300,42 +300,18 @@
       
         
           
-            <p>#解决git冲突问题</p>
-<p>在提交测试组周报的过程中，由于git没有svn锁的机制，成员a在pull后，修改文件commit，接着push,报错如下：</p>
-<pre><code>$ git push
+          解决git冲突问题在提交测试组周报的过程中，由于git没有svn锁的机制，成员a在pull后，修改文件commit，接着push,报错如下：
+$ git push
 To 172.16.250.242:yangxiaolong/weeklyReport.git
- ! [rejected]        master -&gt; master (non-fast-forward)
-error: failed to push some refs to &apos;git@172.16.250.242:yangxiaolong/weeklyReport.git&apos;
-hint: Updates were rejected because the tip of your current branch is behind
-hint: its remote counterpart. Integrate the remote changes (e.g.
-hint: &apos;git pull ...&apos;) before pushing again.
-hint: See the &apos;Note about fast-forwards&apos; in &apos;git push --help&apos; for details.
-</code></pre><p>原因是在成员a push之前有别的成员b已经有了新的push，此时成员a对于同一个文件的修改发生了冲突问题<br>要解决这个问题，我们需要把文件回退到之前的版本（回退意味着此次修改内容丢失，请做好备份），重新pull，编辑文件后commit 接着push</p>
-<p>使用git log 查看日志</p>
-<pre><code>$ git log
-commit 6a8fd82942dc32805fe156f8800d4398f9330ea4 (HEAD -&gt; master)
-Author: “henryyang0820git config --global user.email “y1045033116@qq.com &lt;1045033116@qq.com&gt;
-Date:   Mon Jun 25 10:47:00 2018 +0800
-
-杨晓龙提交周报
-
-commit 50b5dfedbcedff257e2b2cf6ccd047975a146fef
-Author: chengbeiyang &lt;chengbeiyang@bravolinks.cn&gt;
-Date:   Mon Jun 25 10:18:09 2018 +0800
-
-chengbeiyang
-
-commit 053ee3c355fab2e4c0a6d9b0f379ff5e1625fa91 (origin/real)
-Author: 翟松方 &lt;zhaisongfang@bravolinks.cn&gt;
-Date:   Mon Jun 25 10:08:13 2018 +0800
-
-scm20180625
-</code></pre><p>查看日志HEAD -&gt; master, 得知当前的commit需要回退一个版本</p>
-<pre><code>git reset --hard HEAD^
-在Git中，用HEAD表示当前版本，上一个版本就是HEAD^，上上一个版本就是HEAD^^，依次类推
-</code></pre><p>到这里，我们的文件退回到了上一版本，冲突得到解决。使用git pull拉取最新的版本，接着进行正常的编辑文件，add-commit-push来提交周报即可。</p>
-
-          
+ ! [rejected]       
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/06/25/my-git2/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -453,69 +429,22 @@ scm20180625
       
         
           
-            <h1 id="git的简单操作与周报提交"><a href="#git的简单操作与周报提交" class="headerlink" title="git的简单操作与周报提交"></a>git的简单操作与周报提交</h1><ol>
-<li>让测试组成员熟悉git</li>
-<li>周报的提交</li>
-</ol>
-<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><p>默认已经安装好了git，开通企业gitlab</p>
-<ol>
-<li>在希望保存此周报项目的路径鼠标右键，打开Git Bash Here<br><img src="https://thumbnail0.baidupcs.com/thumbnail/44c45370bf66953dab0259d64a27d885?fid=2753268065-250528-30672624538947&amp;time=1529647200&amp;rt=sh&amp;sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-ruhlNKzNw1XeTJuRgg4vSMnEqfM%3D&amp;expires=8h&amp;chkv=0&amp;chkbd=0&amp;chkpc=&amp;dp-logid=4003638769655179253&amp;dp-callid=0&amp;size=c710_u400&amp;quality=100&amp;vuk=-&amp;ft=video" alt="Git bash here"></li>
-<li>在git bash输入下方命令，建立gitlab周报项目的本地仓库：这时可能需要输入gitlab账户名和密码<pre><code>git clone http://172.16.250.242:8082/yangxiaolong/weeklyReport.git
-</code></pre></li>
-<li>此时，会看到weeklyReport的文件夹出现被clone下来，进入文件夹，打开周报的excel文件进行编辑，结束后保存并关闭<br>现在可以Git bash中 cd weeklyReport(项目文件夹名)，也可以双击文件夹进入，右键打开git bash</li>
-<li><p>git status命令可以查看git库的情况</p>
-<pre><code>git bash
-$ git status
-On branch master
-Your branch is up to date with &apos;origin/master&apos;.
+          git的简单操作与周报提交
+让测试组成员熟悉git
+周报的提交
 
-Changes not staged for commit:
-  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
-  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+流程默认已经安装好了git，开通企业gitlab
 
-  modified:                                   &quot;\350\264\250\351\207\217\346\265\213\350\257\225\344\270\255\345\277\203\345\267\245\344\275\234\350\256\241\345\210\222\345\217\212\346\200\273\347\273\223.xls&quot;
-
-no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
-</code></pre></li>
-<li>git status命令可以让我们时刻掌握仓库当前的状态，上面的命令输出告诉我们，文件被修改过了，但还没有准备提交的修改。<pre><code>git add weeklyReport.xls
-</code></pre>将weeklyReport.xlsx加入git的版本管理（此命令可以用于添加任意文件到git的管理）</li>
-<li><p>同样没有任何输出。在执行第二步git commit之前，我们再运行git status看看当前仓库的状态：</p>
-<pre><code>On branch master
-Your branch is up to date with &apos;origin/master&apos;.
-
-Changes to be committed:
-  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
-
-modified:               &quot;\350\264\250\351\207\217\346\265\213\350\257\225\344\270\255\345\277\203\345\267\245\344\275\234\350\256\241\345\210\222\345\217\212\346\200\273\347\273\223.xls&quot;
-</code></pre></li>
-<li><p>git status告诉我们，将要被提交的修改包括 weeklyReport.xls，下一步，就可以放心地提交了：<br>使用git commit -m “提交时输入的文字”</p>
-<pre><code>git commit -m &quot;某某某提交周报&quot;
-[master e475afc] 某某某提交周报
- 1 file changed, 1 insertion(+)
-</code></pre></li>
-<li><p>提交后，我们再用git status命令看看仓库的当前状态：</p>
-<pre><code>git status
-On branch master
-nothing to commit, working tree clean
-</code></pre><p>Git告诉我们当前没有需要提交的修改。工作目录干净</p>
-</li>
-<li>使用git push命令推送修改到远程库<pre><code>$ git push
-Counting objects: 4, done.
-Delta compression using up to 4 threads.
-Compressing objects: 100% (4/4), done.
-Writing objects: 100% (4/4), 20.34 KiB | 2.03 MiB/s, done.
-Total 4 (delta 1), reused 0 (delta 0)
-</code></pre>另外在修改周报时候，需要先git pull拉取远端仓库的最新数据<pre><code>$ git pull
-remote: Counting objects: 2, done.
-remote: Compressing objects: 100% (1/1), done.
-remote: Total 2 (delta 0), reused 0 (delta 0)[]
-Unpacking objects: 100% (2/2), done.
-From http://172.16.250.242:8082/yangxiaolong/weeklyReport
-   b3ec051..78ee4cd  master     -&gt; origin/master
-</code></pre>之后再进行周报的修改提交操作，git使用的简单介绍到此结束，详细命令可以查看<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">廖雪峰的git教程</a></li>
-</ol>
-
-          
+在希望保存此周报项目的路径鼠标右键，打开Git Bash Here
+在git bash输入下方命令，建立gitlab周报项目的本地仓库：这时可能需要输入gitlab账户名和密码git
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/06/22/weekly-Report/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
