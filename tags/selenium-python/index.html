@@ -79,17 +79,13 @@
 
 
 
-<meta name="description" content="selenium笔记在写脚本过程中，首先登录系统，接着通过driver.execute_script(js)打开新标签页，测试用例执行结束后在tearDown()中： self.driver.switch_to.window(self.driver.window_handles[1]) self.driver.close() 关闭了当前的标签页，后续代码本应再次执行driver.execute_s">
-<meta property="og:type" content="article">
-<meta property="og:title" content="selenium笔记">
-<meta property="og:url" content="http://yoursite.com/2017/05/26/selenium-note/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/tags/selenium-python/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="selenium笔记在写脚本过程中，首先登录系统，接着通过driver.execute_script(js)打开新标签页，测试用例执行结束后在tearDown()中： self.driver.switch_to.window(self.driver.window_handles[1]) self.driver.close() 关闭了当前的标签页，后续代码本应再次执行driver.execute_s">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-26T12:30:58.979Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="selenium笔记">
-<meta name="twitter:description" content="selenium笔记在写脚本过程中，首先登录系统，接着通过driver.execute_script(js)打开新标签页，测试用例执行结束后在tearDown()中： self.driver.switch_to.window(self.driver.window_handles[1]) self.driver.close() 关闭了当前的标签页，后续代码本应再次执行driver.execute_s">
+<meta name="twitter:title" content="Hexo">
 
 
 
@@ -119,13 +115,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/05/26/selenium-note/"/>
+  <link rel="canonical" href="http://yoursite.com/tags/selenium-python/"/>
 
 
 
 
 
-  <title>selenium笔记 | Hexo</title>
+  <title>Tag: selenium python | Hexo</title>
   
 
 
@@ -144,7 +140,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -218,149 +214,54 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
+  
+  
+  
+  <div class="post-block tag">
 
-  
+    <div id="posts" class="posts-collapse">
+      <div class="collection-title">
+        <h1>selenium python<small>Tag</small>
+        </h1>
+      </div>
 
-  
-  
-  
+      
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/26/selenium-note/">
+    <header class="post-header">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
+      <h2 class="post-title">
         
-        
-          <h1 class="post-title" itemprop="name headline">selenium笔记</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
+            <a class="post-title-link" href="/2018/01/08/selenium-note/" itemprop="url">
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span itemprop="name">selenium笔记</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-26T19:52:39+08:00">
-                2017-05-26
-              </time>
-            
+            </a>
+        
+      </h2>
 
-            
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-01-08T19:52:39+08:00"
+              content="2018-01-08" >
+          01-08
+        </time>
+      </div>
 
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h1 id="selenium笔记"><a href="#selenium笔记" class="headerlink" title="selenium笔记"></a>selenium笔记</h1><p>在写脚本过程中，首先登录系统，接着通过driver.execute_script(js)打开新标签页，测试用例执行结束后在tearDown()中：</p>
-<pre><code>self.driver.switch_to.window(self.driver.window_handles[1])
-self.driver.close()
-</code></pre><p>关闭了当前的标签页，后续代码本应再次执行driver.execute_script(js)，但是却跳过直接执行了tearDown（）,对代码try-catch后，异常如下：</p>
-<pre><code>no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=62.0.3202.75)
-  (Driver info: chromedriver=2.31.488763 (092de99f48a300323ecf8c2a4e2e7cab51de5ba8),platform=Windows NT 6.1.7601 SP1 x86_64)
-</code></pre><p>猜想是driver被关闭焦点丢失，果然，在switch_to，widow到当前标签页获取焦点后，后续代码得以正常执行。<br>经验：焦点很重要。</p>
-
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/06/22/weekly-Report/" rel="prev" title="周报提交与git操作">
-                周报提交与git操作 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+    </header>
   </article>
 
 
-
-    <div class="post-spread">
       
     </div>
+
   </div>
+  
+  
+  
+
+  
 
 
           </div>
@@ -368,10 +269,6 @@ from unknown error: web view not found
 
 
           
-
-  
-
-
 
         </div>
         
@@ -392,17 +289,8 @@ from unknown error: web view not found
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -417,7 +305,7 @@ from unknown error: web view not found
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -430,7 +318,7 @@ from unknown error: web view not found
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -453,22 +341,6 @@ from unknown error: web view not found
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#selenium笔记"><span class="nav-number">1.</span> <span class="nav-text">selenium笔记</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -602,10 +474,6 @@ from unknown error: web view not found
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 
