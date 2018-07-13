@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="git," />
+  <meta name="keywords" content="python," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="解决git冲突问题在提交测试组周报的过程中，由于git没有svn锁的机制，成员a在pull后，修改文件commit，接着push,报错如下： $ git push To 172.16.250.242:yangxiaolong/weeklyReport.git  ! [rejected]        master -&amp;gt; master (non-fast-forward) error: fai">
-<meta name="keywords" content="git">
+<meta name="description" content="关于接口测试接口测试的意义 更早的发现问题：因为更早的发现bug,修复的成本更低。 缩短产品研发周期：提早介入发现并解决bug，功能测试时遇到bug减少，缩小项目上线时间。 发现更底层的问题。  HTTPHTTP：是从万维网服务器传输超文本到本地浏览器的传输协议，基于TCP/IP通讯协议来传递数据。HTTP协议工作于客户端——服务端架构上。浏览器作为HTTP客户端通过URL向HTTP服务端（即We">
+<meta name="keywords" content="python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="解决冲突">
-<meta property="og:url" content="http://yoursite.com/2018/06/25/my-git2/index.html">
+<meta property="og:title" content="关于接口测试">
+<meta property="og:url" content="http://yoursite.com/2018/03/13/my-interface-test/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="解决git冲突问题在提交测试组周报的过程中，由于git没有svn锁的机制，成员a在pull后，修改文件commit，接着push,报错如下： $ git push To 172.16.250.242:yangxiaolong/weeklyReport.git  ! [rejected]        master -&amp;gt; master (non-fast-forward) error: fai">
+<meta property="og:description" content="关于接口测试接口测试的意义 更早的发现问题：因为更早的发现bug,修复的成本更低。 缩短产品研发周期：提早介入发现并解决bug，功能测试时遇到bug减少，缩小项目上线时间。 发现更底层的问题。  HTTPHTTP：是从万维网服务器传输超文本到本地浏览器的传输协议，基于TCP/IP通讯协议来传递数据。HTTP协议工作于客户端——服务端架构上。浏览器作为HTTP客户端通过URL向HTTP服务端（即We">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-25T05:58:30.880Z">
+<meta property="og:updated_time" content="2018-07-13T08:44:26.777Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="解决冲突">
-<meta name="twitter:description" content="解决git冲突问题在提交测试组周报的过程中，由于git没有svn锁的机制，成员a在pull后，修改文件commit，接着push,报错如下： $ git push To 172.16.250.242:yangxiaolong/weeklyReport.git  ! [rejected]        master -&amp;gt; master (non-fast-forward) error: fai">
+<meta name="twitter:title" content="关于接口测试">
+<meta name="twitter:description" content="关于接口测试接口测试的意义 更早的发现问题：因为更早的发现bug,修复的成本更低。 缩短产品研发周期：提早介入发现并解决bug，功能测试时遇到bug减少，缩小项目上线时间。 发现更底层的问题。  HTTPHTTP：是从万维网服务器传输超文本到本地浏览器的传输协议，基于TCP/IP通讯协议来传递数据。HTTP协议工作于客户端——服务端架构上。浏览器作为HTTP客户端通过URL向HTTP服务端（即We">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/25/my-git2/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/13/my-interface-test/"/>
 
 
 
 
 
-  <title>解决冲突 | Hexo</title>
+  <title>关于接口测试 | Hexo</title>
   
 
 
@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/25/my-git2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/13/my-interface-test/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">解决冲突</h1>
+          <h1 class="post-title" itemprop="name headline">关于接口测试</h1>
         
 
         <div class="post-meta">
@@ -262,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-25T11:42:45+08:00">
-                2018-06-25
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-13T19:42:30+08:00">
+                2018-03-13
               </time>
             
 
@@ -300,39 +300,31 @@
       
 
       
-        <h1 id="解决git冲突问题"><a href="#解决git冲突问题" class="headerlink" title="解决git冲突问题"></a>解决git冲突问题</h1><p>在提交测试组周报的过程中，由于git没有svn锁的机制，成员a在pull后，修改文件commit，接着push,报错如下：</p>
-<pre><code>$ git push
-To 172.16.250.242:yangxiaolong/weeklyReport.git
- ! [rejected]        master -&gt; master (non-fast-forward)
-error: failed to push some refs to &apos;git@172.16.250.242:yangxiaolong/weeklyReport.git&apos;
-hint: Updates were rejected because the tip of your current branch is behind
-hint: its remote counterpart. Integrate the remote changes (e.g.
-hint: &apos;git pull ...&apos;) before pushing again.
-hint: See the &apos;Note about fast-forwards&apos; in &apos;git push --help&apos; for details.
-</code></pre><p>原因是在成员a push之前有别的成员b已经有了新的push，此时成员a对于同一个文件的修改发生了冲突问题<br>要解决这个问题，我们需要把文件回退到之前的版本（回退意味着此次修改内容丢失，请做好备份），重新pull，编辑文件后commit 接着push</p>
-<p>使用git log 查看日志</p>
-<pre><code>$ git log
-commit 6a8fd82942dc32805fe156f8800d4398f9330ea4 (HEAD -&gt; master)
-Author: “henryyang0820git config --global user.email “y1045033116@qq.com &lt;1045033116@qq.com&gt;
-Date:   Mon Jun 25 10:47:00 2018 +0800
-
-杨晓龙提交周报
-
-commit 50b5dfedbcedff257e2b2cf6ccd047975a146fef
-Author: chengbeiyang &lt;chengbeiyang@bravolinks.cn&gt;
-Date:   Mon Jun 25 10:18:09 2018 +0800
-
-chengbeiyang
-
-commit 053ee3c355fab2e4c0a6d9b0f379ff5e1625fa91 (origin/real)
-Author: 翟松方 &lt;zhaisongfang@bravolinks.cn&gt;
-Date:   Mon Jun 25 10:08:13 2018 +0800
-
-scm20180625
-</code></pre><p>查看日志HEAD -&gt; master, 得知当前的commit需要回退一个版本</p>
-<pre><code>git reset --hard HEAD^
-在Git中，用HEAD表示当前版本，上一个版本就是HEAD^，上上一个版本就是HEAD^^，依次类推
-</code></pre><p>到这里，我们的文件退回到了上一版本，冲突得到解决。使用git pull拉取最新的版本，接着进行正常的编辑文件，add-commit-push来提交周报即可。</p>
+        <h1 id="关于接口测试"><a href="#关于接口测试" class="headerlink" title="关于接口测试"></a>关于接口测试</h1><h4 id="接口测试的意义"><a href="#接口测试的意义" class="headerlink" title="接口测试的意义"></a>接口测试的意义</h4><ol>
+<li><strong>更早的发现问题</strong>：因为更早的发现bug,修复的成本更低。</li>
+<li><strong>缩短产品研发周期</strong>：提早介入发现并解决bug，功能测试时遇到bug减少，缩小项目上线时间。</li>
+<li><strong>发现更底层的问题</strong>。</li>
+</ol>
+<h4 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h4><p>HTTP：是从万维网服务器传输超文本到本地浏览器的传输协议，<strong>基于TCP/IP通讯协议来传递数据</strong>。<br>HTTP协议工作于客户端——服务端架构上。浏览器作为HTTP客户端通过URL向HTTP服务端（即Web服务器）发送请求。</p>
+<h4 id="HTTP协议的主要特点"><a href="#HTTP协议的主要特点" class="headerlink" title="HTTP协议的主要特点"></a>HTTP协议的主要特点</h4><ol>
+<li><strong>无连接</strong>：限制每次连接只处理一个请求。服务器处理完客户的请求，并受到客户的应答后，即断开连接。</li>
+<li><strong>媒体独立</strong>：只要客户端和服务器知道如何处理数据内容，任何类型的数据都可以通过HTTP发送。</li>
+<li><strong>无状态</strong>：HTTP协议是无状态协议。对于事务处理没有记忆能力。</li>
+</ol>
+<h4 id="HTTP状态码"><a href="#HTTP状态码" class="headerlink" title="HTTP状态码"></a>HTTP状态码</h4><p>共分为五种类型：</p>
+<ol>
+<li>1xx：信息，服务器收到请求，需要请求和继续执行操作。</li>
+<li>2xx：成功，操作被成功接受并处理。</li>
+<li>3xx：重定向，需要进一步的操作已完成请求。</li>
+<li>4xx：客户端错误，请求包含语法错误或无法完成请求。</li>
+<li>5xx：服务器错误，服务器在处理请求的过程中发生了错误。</li>
+</ol>
+<h4 id="接口测试工具的不足"><a href="#接口测试工具的不足" class="headerlink" title="接口测试工具的不足"></a>接口测试工具的不足</h4><ol>
+<li><strong>测试数据不可控制</strong></li>
+<li><strong>无法测试加密接口</strong></li>
+<li><strong>扩展能力不足</strong></li>
+</ol>
+<p>自动化接口测试框架：Requests+unittest+HTMLTestRunner+ddt</p>
 
       
     </div>
@@ -350,7 +342,7 @@ scm20180625
       
         <div class="post-tags">
           
-            <a href="/tags/git/" rel="tag"># git</a>
+            <a href="/tags/python/" rel="tag"># python</a>
           
         </div>
       
@@ -363,8 +355,8 @@ scm20180625
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/22/weekly-Report/" rel="next" title="周报提交与git操作">
-                <i class="fa fa-chevron-left"></i> 周报提交与git操作
+              <a href="/2018/02/05/python3-diff-2/" rel="next" title="python3和2.7区别小记">
+                <i class="fa fa-chevron-left"></i> python3和2.7区别小记
               </a>
             
           </div>
@@ -372,6 +364,10 @@ scm20180625
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/23/my-fund/" rel="prev" title="基金查询">
+                基金查询 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -494,7 +490,7 @@ scm20180625
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#解决git冲突问题"><span class="nav-number">1.</span> <span class="nav-text">解决git冲突问题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于接口测试"><span class="nav-number">1.</span> <span class="nav-text">关于接口测试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#接口测试的意义"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">接口测试的意义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">HTTP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP协议的主要特点"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">HTTP协议的主要特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP状态码"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">HTTP状态码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接口测试工具的不足"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">接口测试工具的不足</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
