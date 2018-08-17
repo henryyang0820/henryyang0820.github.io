@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="python," />
+  <meta name="keywords" content="python selenium py2exe," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="关于接口测试接口测试的意义 更早的发现问题：因为更早的发现bug,修复的成本更低。 缩短产品研发周期：提早介入发现并解决bug，功能测试时遇到bug减少，缩小项目上线时间。 发现更底层的问题。  HTTPHTTP：是从万维网服务器传输超文本到本地浏览器的传输协议，基于TCP/IP通讯协议来传递数据。HTTP协议工作于客户端——服务端架构上。浏览器作为HTTP客户端通过URL向HTTP服务端（即We">
-<meta name="keywords" content="python">
+<meta name="description" content="背景：测试公司的erp系统过程中，由于数据流程原因，需要建新商机来测试。手动操作浪费时间很枯燥所以用python selenium写了自动化脚本来执行。另外为了使没有安装python环境的同事也能使用，经过比较pyinstaller和py2exe,选用了后者进行打包，同事拿到.exe文件即可执行。 经验：项目中定位了20个页面元素，处理了两种alert（一种alert.accept处理,一种是自定">
+<meta name="keywords" content="python selenium py2exe">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于接口测试">
-<meta property="og:url" content="http://yoursite.com/2018/03/13/my-interface-test/index.html">
+<meta property="og:title" content="erp项目自动化创建流程">
+<meta property="og:url" content="http://yoursite.com/2018/02/10/selenium-note-1/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="关于接口测试接口测试的意义 更早的发现问题：因为更早的发现bug,修复的成本更低。 缩短产品研发周期：提早介入发现并解决bug，功能测试时遇到bug减少，缩小项目上线时间。 发现更底层的问题。  HTTPHTTP：是从万维网服务器传输超文本到本地浏览器的传输协议，基于TCP/IP通讯协议来传递数据。HTTP协议工作于客户端——服务端架构上。浏览器作为HTTP客户端通过URL向HTTP服务端（即We">
+<meta property="og:description" content="背景：测试公司的erp系统过程中，由于数据流程原因，需要建新商机来测试。手动操作浪费时间很枯燥所以用python selenium写了自动化脚本来执行。另外为了使没有安装python环境的同事也能使用，经过比较pyinstaller和py2exe,选用了后者进行打包，同事拿到.exe文件即可执行。 经验：项目中定位了20个页面元素，处理了两种alert（一种alert.accept处理,一种是自定">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-13T08:44:26.777Z">
+<meta property="og:updated_time" content="2018-08-17T03:36:15.512Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于接口测试">
-<meta name="twitter:description" content="关于接口测试接口测试的意义 更早的发现问题：因为更早的发现bug,修复的成本更低。 缩短产品研发周期：提早介入发现并解决bug，功能测试时遇到bug减少，缩小项目上线时间。 发现更底层的问题。  HTTPHTTP：是从万维网服务器传输超文本到本地浏览器的传输协议，基于TCP/IP通讯协议来传递数据。HTTP协议工作于客户端——服务端架构上。浏览器作为HTTP客户端通过URL向HTTP服务端（即We">
+<meta name="twitter:title" content="erp项目自动化创建流程">
+<meta name="twitter:description" content="背景：测试公司的erp系统过程中，由于数据流程原因，需要建新商机来测试。手动操作浪费时间很枯燥所以用python selenium写了自动化脚本来执行。另外为了使没有安装python环境的同事也能使用，经过比较pyinstaller和py2exe,选用了后者进行打包，同事拿到.exe文件即可执行。 经验：项目中定位了20个页面元素，处理了两种alert（一种alert.accept处理,一种是自定">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/13/my-interface-test/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/02/10/selenium-note-1/"/>
 
 
 
 
 
-  <title>关于接口测试 | Hexo</title>
+  <title>erp项目自动化创建流程 | Hexo</title>
   
 
 
@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/13/my-interface-test/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/10/selenium-note-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">关于接口测试</h1>
+          <h1 class="post-title" itemprop="name headline">erp项目自动化创建流程</h1>
         
 
         <div class="post-meta">
@@ -262,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-13T19:42:30+08:00">
-                2018-03-13
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-10T17:49:56+08:00">
+                2018-02-10
               </time>
             
 
@@ -300,31 +300,67 @@
       
 
       
-        <h1 id="关于接口测试"><a href="#关于接口测试" class="headerlink" title="关于接口测试"></a>关于接口测试</h1><h4 id="接口测试的意义"><a href="#接口测试的意义" class="headerlink" title="接口测试的意义"></a>接口测试的意义</h4><ol>
-<li><strong>更早的发现问题</strong>：因为更早的发现bug,修复的成本更低。</li>
-<li><strong>缩短产品研发周期</strong>：提早介入发现并解决bug，功能测试时遇到bug减少，缩小项目上线时间。</li>
-<li><strong>发现更底层的问题</strong>。</li>
-</ol>
-<h4 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h4><p>HTTP：是从万维网服务器传输超文本到本地浏览器的传输协议，<strong>基于TCP/IP通讯协议来传递数据</strong>。<br>HTTP协议工作于客户端——服务端架构上。浏览器作为HTTP客户端通过URL向HTTP服务端（即Web服务器）发送请求。</p>
-<h4 id="HTTP协议的主要特点"><a href="#HTTP协议的主要特点" class="headerlink" title="HTTP协议的主要特点"></a>HTTP协议的主要特点</h4><ol>
-<li><strong>无连接</strong>：限制每次连接只处理一个请求。服务器处理完客户的请求，并受到客户的应答后，即断开连接。</li>
-<li><strong>媒体独立</strong>：只要客户端和服务器知道如何处理数据内容，任何类型的数据都可以通过HTTP发送。</li>
-<li><strong>无状态</strong>：HTTP协议是无状态协议。对于事务处理没有记忆能力。</li>
-</ol>
-<h4 id="HTTP状态码"><a href="#HTTP状态码" class="headerlink" title="HTTP状态码"></a>HTTP状态码</h4><p>共分为五种类型：</p>
+        <h6 id="背景："><a href="#背景：" class="headerlink" title="背景："></a>背景：</h6><p>测试公司的erp系统过程中，由于数据流程原因，需要建新商机来测试。手动操作浪费时间很枯燥所以用python selenium写了自动化脚本来执行。另外为了使没有安装python环境的同事也能使用，经过比较pyinstaller和py2exe,选用了后者进行打包，同事拿到.exe文件即可执行。</p>
+<h6 id="经验："><a href="#经验：" class="headerlink" title="经验："></a>经验：</h6><p>项目中定位了20个页面元素，处理了两种alert（一种alert.accept处理,一种是自定义，用js处理），三个跳页，多个iframe之间切换。</p>
+<p>定位元素时常用三种方式，By.NAME, By.ID, By.XPATH。前两种能定位到最好，如果不行的话使用XPATH：</p>
 <ol>
-<li>1xx：信息，服务器收到请求，需要请求和继续执行操作。</li>
-<li>2xx：成功，操作被成功接受并处理。</li>
-<li>3xx：重定向，需要进一步的操作已完成请求。</li>
-<li>4xx：客户端错误，请求包含语法错误或无法完成请求。</li>
-<li>5xx：服务器错误，服务器在处理请求的过程中发生了错误。</li>
+<li>用text来找：<pre><code>locator = (By.XPATH,&quot;//*[text()=&apos;客户关系管理&apos;]&quot;)
+</code></pre></li>
+<li>遇到元素无法定位时，找它的父一级，然后向下数：<pre><code>locator = (By.XPATH,&apos;//*[@id=&quot;ext-comp-1028&quot;]/tbody/tr/td[2]/em/button&apos;)
+</code></pre></li>
+<li>父级元素也定位不到时，找他的同级，用//following-sibling::*<pre><code>#找不到相应元素的时候找它相邻的
+locator = (By.XPATH, &apos;//*[@id=&quot;ext-comp-1006&quot;]//following-sibling::*&apos;) 
+</code></pre></li>
+<li>项目中用了iframe，有一个元素实在找不到，是从页面html开始数的，这时候遇到个坑，如果你在不正确的iframe中，是找不到元素的，一定要看清楚iframe,切换到正确的iframe中，再查找元素<pre><code>driver.switch_to.parent_frame()
+driver.switch_to.frame(driver.find_element(*locator_start_callender))
+time.sleep(1)
+driver.find_element(*locator_start_pick).click()
+</code></pre></li>
+<li>在4中，涉及到了iframe的切换，除了iframe的name,id,以及parent,default切换以外，还可以把iframe当做元素来定位到，然后切换<pre><code>#把iframe作为元素找到，再调用用switch_to.frame(iframe)
+locator_start_callender = (By.XPATH,&quot;/html/body/div[last()]/iframe&quot;)
+driver.switch_to.frame(driver.find_element(*locator_start_callender))
+</code></pre></li>
+<li>双击<pre><code>#导入 ActionChains
+from selenium.webdriver.common.action_chains import ActionChains
+ActionChains(driver).double_click(driver.find_element(*locator)).perform()
+</code></pre></li>
+<li><p>处理下拉框</p>
+<pre><code>#导入Select
+# select_by_index           通过索引定位
+# select_by_value           通过value值定位
+# select_by_visible_text    通过文本值定位
+
+from selenium.webdriver.support.select import Select
+Select(driver.find_element_by_name(&quot;LYDM&quot;)).select_by_index(&quot;1&quot;)
+</code></pre></li>
+<li>处理alert。alert.accpt()即可，但是遇到自定义的alert,需要js来处理<pre><code>js = &apos;document.getElementById(&quot;id&quot;).style.display=&quot;none&quot;;&apos;
+driver.execute_script(js)
+</code></pre></li>
+<li>打包遇到的坑。使用python3.4 py2exe打包，报错如下<pre><code>Traceback (most recent call last):
+  File &quot;test_erp.py&quot;, line 3, in &lt;module&gt;
+  File &quot;selenium\webdriver\__init__.pyc&quot;, line 18, in &lt;module&gt;
+  File &quot;selenium\webdriver\firefox\webdriver.pyc&quot;, line 39, in &lt;module&gt;
+  File &quot;selenium\webdriver\remote\webdriver.pyc&quot;, line 25, in &lt;module&gt;
+  File &quot;selenium\webdriver\remote\webelement.pyc&quot;, line 40, in &lt;module&gt;
+  File &quot;pkgutil.pyc&quot;, line 591, in get_data
+IOError: [Errno 2] No such file or directory:&apos;selenium\\webdriver\\remote\\getAttribute.js&apos;
+</code></pre>解决方法：步骤1：修改webelement.py 它的位置C:\Python34\Lib\site-packages\selenium\webdriver\remote<pre><code>import sys
+frozen = getattr(sys, &apos;frozen&apos;, &apos;&apos;)
+if not frozen:
+getAttribute_js = pkgutil.get_data(__package__, &apos;getAttribute.js&apos;).decode(&apos;utf8&apos;)
+isDisplayed_js = pkgutil.get_data(__package__, &apos;isDisplayed.js&apos;).decode(&apos;utf8&apos;)
+else:
+approot = os.path.dirname(sys.executable)
+getAttribute_js = open(os.path.join(approot, &apos;getAttribute.js&apos;), &apos;rb&apos;).read().decode(&apos;utf8&apos;)
+isDisplayed_js = open(os.path.join(approot, &apos;isDisplayed.js&apos;), &apos;rb&apos;).read().decode(&apos;utf8&apos;)
+</code></pre>步骤2，在你的setup.py 中添加代码:<pre><code>setup(
+data_files=[(&quot;&quot;,[(&apos;C:\Python34\Lib\site-packages\selenium\webdriver\\remote\getAttribute.js&apos;),(&apos;C:\Python34\Lib\site-packages\selenium\webdriver\\remote\isDisplayed.js&apos;)])],
+console=[{&quot;script&quot;: &quot;test_erp.py&quot;}],
+options=options,
+zipfile=None
+)
+</code></pre></li>
 </ol>
-<h4 id="接口测试工具的不足"><a href="#接口测试工具的不足" class="headerlink" title="接口测试工具的不足"></a>接口测试工具的不足</h4><ol>
-<li><strong>测试数据不可控制</strong></li>
-<li><strong>无法测试加密接口</strong></li>
-<li><strong>扩展能力不足</strong></li>
-</ol>
-<p>自动化接口测试框架：Requests+unittest+HTMLTestRunner+ddt</p>
 
       
     </div>
@@ -342,7 +378,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/python/" rel="tag"># python</a>
+            <a href="/tags/python-selenium-py2exe/" rel="tag"># python selenium py2exe</a>
           
         </div>
       
@@ -355,8 +391,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/10/selenium-note-1/" rel="next" title="erp项目自动化创建流程">
-                <i class="fa fa-chevron-left"></i> erp项目自动化创建流程
+              <a href="/2018/02/05/python3-diff-2/" rel="next" title="python3和2.7区别小记">
+                <i class="fa fa-chevron-left"></i> python3和2.7区别小记
               </a>
             
           </div>
@@ -365,8 +401,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/23/my-fund/" rel="prev" title="基金查询">
-                基金查询 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/13/my-interface-test/" rel="prev" title="关于接口测试">
+                关于接口测试 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -490,7 +526,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于接口测试"><span class="nav-number">1.</span> <span class="nav-text">关于接口测试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#接口测试的意义"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">接口测试的意义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">HTTP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP协议的主要特点"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">HTTP协议的主要特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP状态码"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">HTTP状态码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接口测试工具的不足"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">接口测试工具的不足</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#背景："><span class="nav-number">1.</span> <span class="nav-text">背景：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#经验："><span class="nav-number">2.</span> <span class="nav-text">经验：</span></a></li></ol></div>
             
 
           </div>
