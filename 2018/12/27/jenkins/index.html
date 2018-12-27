@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="python," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -79,18 +79,17 @@
 
 
 
-<meta name="description" content="关于接口测试接口测试的意义 更早的发现问题：因为更早的发现bug,修复的成本更低。 缩短产品研发周期：提早介入发现并解决bug，功能测试时遇到bug减少，缩小项目上线时间。 发现更底层的问题。  HTTPHTTP：是从万维网服务器传输超文本到本地浏览器的传输协议，基于TCP/IP通讯协议来传递数据。HTTP协议工作于客户端——服务端架构上。浏览器作为HTTP客户端通过URL向HTTP服务端（即We">
-<meta name="keywords" content="python">
+<meta name="description" content="刚刚买了腾讯云，搭建jenkins到服务器，总结如下 java安装最新版本的java yum install java tomcat下载 wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.92/bin/apache-tomcat-7.0.92.tar.gz 新建tomcat存放的目录 mkdir /usr/lo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于接口测试">
-<meta property="og:url" content="http://yoursite.com/2018/03/13/my-interface-test/index.html">
+<meta property="og:title" content="linux搭建jenkins">
+<meta property="og:url" content="http://yoursite.com/2018/12/27/jenkins/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="关于接口测试接口测试的意义 更早的发现问题：因为更早的发现bug,修复的成本更低。 缩短产品研发周期：提早介入发现并解决bug，功能测试时遇到bug减少，缩小项目上线时间。 发现更底层的问题。  HTTPHTTP：是从万维网服务器传输超文本到本地浏览器的传输协议，基于TCP/IP通讯协议来传递数据。HTTP协议工作于客户端——服务端架构上。浏览器作为HTTP客户端通过URL向HTTP服务端（即We">
+<meta property="og:description" content="刚刚买了腾讯云，搭建jenkins到服务器，总结如下 java安装最新版本的java yum install java tomcat下载 wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.92/bin/apache-tomcat-7.0.92.tar.gz 新建tomcat存放的目录 mkdir /usr/lo">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-13T08:44:26.777Z">
+<meta property="og:updated_time" content="2018-12-27T07:30:48.140Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于接口测试">
-<meta name="twitter:description" content="关于接口测试接口测试的意义 更早的发现问题：因为更早的发现bug,修复的成本更低。 缩短产品研发周期：提早介入发现并解决bug，功能测试时遇到bug减少，缩小项目上线时间。 发现更底层的问题。  HTTPHTTP：是从万维网服务器传输超文本到本地浏览器的传输协议，基于TCP/IP通讯协议来传递数据。HTTP协议工作于客户端——服务端架构上。浏览器作为HTTP客户端通过URL向HTTP服务端（即We">
+<meta name="twitter:title" content="linux搭建jenkins">
+<meta name="twitter:description" content="刚刚买了腾讯云，搭建jenkins到服务器，总结如下 java安装最新版本的java yum install java tomcat下载 wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.92/bin/apache-tomcat-7.0.92.tar.gz 新建tomcat存放的目录 mkdir /usr/lo">
 
 
 
@@ -120,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/13/my-interface-test/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/12/27/jenkins/"/>
 
 
 
 
 
-  <title>关于接口测试 | Hexo</title>
+  <title>linux搭建jenkins | Hexo</title>
   
 
 
@@ -233,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/13/my-interface-test/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/27/jenkins/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -250,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">关于接口测试</h1>
+          <h1 class="post-title" itemprop="name headline">linux搭建jenkins</h1>
         
 
         <div class="post-meta">
@@ -262,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-13T19:42:30+08:00">
-                2018-03-13
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-27T13:58:12+08:00">
+                2018-12-27
               </time>
             
 
@@ -300,32 +299,32 @@
       
 
       
-        <h1 id="关于接口测试"><a href="#关于接口测试" class="headerlink" title="关于接口测试"></a>关于接口测试</h1><h4 id="接口测试的意义"><a href="#接口测试的意义" class="headerlink" title="接口测试的意义"></a>接口测试的意义</h4><ol>
-<li><strong>更早的发现问题</strong>：因为更早的发现bug,修复的成本更低。</li>
-<li><strong>缩短产品研发周期</strong>：提早介入发现并解决bug，功能测试时遇到bug减少，缩小项目上线时间。</li>
-<li><strong>发现更底层的问题</strong>。</li>
-</ol>
-<h4 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h4><p>HTTP：是从万维网服务器传输超文本到本地浏览器的传输协议，<strong>基于TCP/IP通讯协议来传递数据</strong>。<br>HTTP协议工作于客户端——服务端架构上。浏览器作为HTTP客户端通过URL向HTTP服务端（即Web服务器）发送请求。</p>
-<h4 id="HTTP协议的主要特点"><a href="#HTTP协议的主要特点" class="headerlink" title="HTTP协议的主要特点"></a>HTTP协议的主要特点</h4><ol>
-<li><strong>无连接</strong>：限制每次连接只处理一个请求。服务器处理完客户的请求，并受到客户的应答后，即断开连接。</li>
-<li><strong>媒体独立</strong>：只要客户端和服务器知道如何处理数据内容，任何类型的数据都可以通过HTTP发送。</li>
-<li><strong>无状态</strong>：HTTP协议是无状态协议。对于事务处理没有记忆能力。</li>
-</ol>
-<h4 id="HTTP状态码"><a href="#HTTP状态码" class="headerlink" title="HTTP状态码"></a>HTTP状态码</h4><p>共分为五种类型：</p>
-<ol>
-<li>1xx：信息，服务器收到请求，需要请求和继续执行操作。</li>
-<li>2xx：成功，操作被成功接受并处理。</li>
-<li>3xx：重定向，需要进一步的操作已完成请求。</li>
-<li>4xx：客户端错误，请求包含语法错误或无法完成请求。</li>
-<li>5xx：服务器错误，服务器在处理请求的过程中发生了错误。</li>
-</ol>
-<h4 id="接口测试工具的不足"><a href="#接口测试工具的不足" class="headerlink" title="接口测试工具的不足"></a>接口测试工具的不足</h4><ol>
-<li><strong>测试数据不可控制</strong></li>
-<li><strong>无法测试加密接口</strong></li>
-<li><strong>扩展能力不足</strong></li>
-</ol>
-<p>自动化接口测试框架：Requests+unittest+HTMLTestRunner+ddt</p>
-
+        <p>刚刚买了腾讯云，搭建jenkins到服务器，总结如下</p>
+<h2 id="java"><a href="#java" class="headerlink" title="java"></a>java</h2><p>安装最新版本的java</p>
+<pre><code>yum install java
+</code></pre><h2 id="tomcat"><a href="#tomcat" class="headerlink" title="tomcat"></a>tomcat</h2><p>下载</p>
+<pre><code>wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.92/bin/apache-tomcat-7.0.92.tar.gz
+</code></pre><p>新建tomcat存放的目录</p>
+<pre><code>mkdir /usr/local/tomcat
+</code></pre><p>拷贝下载好的 apache-tomcat-7.0.92.tar.gz 到 tomcat目录下</p>
+<pre><code>cp apache-tomcat-7.0.92.tar.gz /usr/local/tomcat/
+</code></pre><p>进入tomcat目录，并解压</p>
+<pre><code>cd /usr/local/tomcat/
+tar -zxvf apache-tomcat-7.0.92.tar.gz
+</code></pre><p>进入解压的tomcat包的bin目录，并启动tomcat</p>
+<pre><code>cd /usr/local/tomcat/apache-tomcat-7.0.92/bin/
+./startup.sh
+</code></pre><h2 id="jenkins"><a href="#jenkins" class="headerlink" title="jenkins"></a>jenkins</h2><p>下载</p>
+<pre><code>wget http://mirrors.tuna.tsinghua.edu.cn/jenkins/redhat/jenkins-2.156-1.1.noarch.rpm
+</code></pre><p>安装</p>
+<pre><code>sudo rpm -ih jenkins-2.156-1.1.noarch.rpm
+</code></pre><p>启动 jenkins</p>
+<pre><code>sudo service jenkins start
+</code></pre><p>修改user =port</p>
+<pre><code>vi /etc/sysconfig/jenkins
+</code></pre><p>获取密码</p>
+<pre><code>cat /var/lib/jenkins/secrets/initialAdminPassword
+</code></pre>
       
     </div>
     
@@ -340,12 +339,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/python/" rel="tag"># python</a>
-          
-        </div>
-      
 
       
       
@@ -355,8 +348,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/10/selenium-note-1/" rel="next" title="erp项目自动化创建流程">
-                <i class="fa fa-chevron-left"></i> erp项目自动化创建流程
+              <a href="/2018/06/25/my-git2/" rel="next" title="解决冲突">
+                <i class="fa fa-chevron-left"></i> 解决冲突
               </a>
             
           </div>
@@ -364,10 +357,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/23/my-fund/" rel="prev" title="基金查询">
-                基金查询 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -490,7 +479,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于接口测试"><span class="nav-number">1.</span> <span class="nav-text">关于接口测试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#接口测试的意义"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">接口测试的意义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">HTTP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP协议的主要特点"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">HTTP协议的主要特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP状态码"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">HTTP状态码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接口测试工具的不足"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">接口测试工具的不足</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#java"><span class="nav-number">1.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tomcat"><span class="nav-number">2.</span> <span class="nav-text">tomcat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jenkins"><span class="nav-number">3.</span> <span class="nav-text">jenkins</span></a></li></ol></div>
             
 
           </div>
