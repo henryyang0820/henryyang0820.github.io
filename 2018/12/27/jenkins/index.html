@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="刚刚买了腾讯云，搭建jenkins到服务器，总结如下 java安装最新版本的java yum install java tomcat下载 wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.92/bin/apache-tomcat-7.0.92.tar.gz 新建tomcat存放的目录 mkdir /usr/lo">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-27T07:30:48.140Z">
+<meta property="og:updated_time" content="2018-12-27T07:38:29.481Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux搭建jenkins">
 <meta name="twitter:description" content="刚刚买了腾讯云，搭建jenkins到服务器，总结如下 java安装最新版本的java yum install java tomcat下载 wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.92/bin/apache-tomcat-7.0.92.tar.gz 新建tomcat存放的目录 mkdir /usr/lo">
@@ -320,7 +320,7 @@ tar -zxvf apache-tomcat-7.0.92.tar.gz
 <pre><code>sudo rpm -ih jenkins-2.156-1.1.noarch.rpm
 </code></pre><p>启动 jenkins</p>
 <pre><code>sudo service jenkins start
-</code></pre><p>修改user =port</p>
+</code></pre><p>修改user 和port</p>
 <pre><code>vi /etc/sysconfig/jenkins
 </code></pre><p>获取密码</p>
 <pre><code>cat /var/lib/jenkins/secrets/initialAdminPassword
