@@ -443,69 +443,16 @@
       
         
           
-            <h6 id="背景："><a href="#背景：" class="headerlink" title="背景："></a>背景：</h6><p>测试公司的erp系统过程中，由于数据流程原因，需要建新商机来测试。手动操作浪费时间很枯燥所以用python selenium写了自动化脚本来执行。另外为了使没有安装python环境的同事也能使用，经过比较pyinstaller和py2exe,选用了后者进行打包，同事拿到.exe文件即可执行。</p>
-<h6 id="经验："><a href="#经验：" class="headerlink" title="经验："></a>经验：</h6><p>项目中定位了20个页面元素，处理了两种alert（一种alert.accept处理,一种是自定义，用js处理），三个跳页，多个iframe之间切换。</p>
-<p>定位元素时常用三种方式，By.NAME, By.ID, By.XPATH。前两种能定位到最好，如果不行的话使用XPATH：</p>
-<ol>
-<li>用text来找：<pre><code>locator = (By.XPATH,&quot;//*[text()=&apos;客户关系管理&apos;]&quot;)
-</code></pre></li>
-<li>遇到元素无法定位时，找它的父一级，然后向下数：<pre><code>locator = (By.XPATH,&apos;//*[@id=&quot;ext-comp-1028&quot;]/tbody/tr/td[2]/em/button&apos;)
-</code></pre></li>
-<li>父级元素也定位不到时，找他的同级，用//following-sibling::*<pre><code>#找不到相应元素的时候找它相邻的
-locator = (By.XPATH, &apos;//*[@id=&quot;ext-comp-1006&quot;]//following-sibling::*&apos;) 
-</code></pre></li>
-<li>项目中用了iframe，有一个元素实在找不到，是从页面html开始数的，这时候遇到个坑，如果你在不正确的iframe中，是找不到元素的，一定要看清楚iframe,切换到正确的iframe中，再查找元素<pre><code>driver.switch_to.parent_frame()
-driver.switch_to.frame(driver.find_element(*locator_start_callender))
-time.sleep(1)
-driver.find_element(*locator_start_pick).click()
-</code></pre></li>
-<li>在4中，涉及到了iframe的切换，除了iframe的name,id,以及parent,default切换以外，还可以把iframe当做元素来定位到，然后切换<pre><code>#把iframe作为元素找到，再调用用switch_to.frame(iframe)
-locator_start_callender = (By.XPATH,&quot;/html/body/div[last()]/iframe&quot;)
-driver.switch_to.frame(driver.find_element(*locator_start_callender))
-</code></pre></li>
-<li>双击<pre><code>#导入 ActionChains
-from selenium.webdriver.common.action_chains import ActionChains
-ActionChains(driver).double_click(driver.find_element(*locator)).perform()
-</code></pre></li>
-<li><p>处理下拉框</p>
-<pre><code>#导入Select
-# select_by_index           通过索引定位
-# select_by_value           通过value值定位
-# select_by_visible_text    通过文本值定位
+          背景：测试公司的erp系统过程中，由于数据流程原因，需要建新商机来测试。手动操作浪费时间很枯燥所以用python selenium写了自动化脚本来执行。另外为了使没有安装python环境的同事也能使用，经过比较pyinstaller和py2exe,选用了后者进行打包，同事拿到.exe文件即可执行。
 
-from selenium.webdriver.support.select import Select
-Select(driver.find_element_by_name(&quot;LYDM&quot;)).select_by_index(&quot;1&quot;)
-</code></pre></li>
-<li>处理alert。alert.accpt()即可，但是遇到自定义的alert,需要js来处理<pre><code>js = &apos;document.getElementById(&quot;id&quot;).style.display=&quot;none&quot;;&apos;
-driver.execute_script(js)
-</code></pre></li>
-<li>打包遇到的坑。使用python3.4 py2exe打包，报错如下<pre><code>Traceback (most recent call last):
-  File &quot;test_erp.py&quot;, line 3, in &lt;module&gt;
-  File &quot;selenium\webdriver\__init__.pyc&quot;, line 18, in &lt;module&gt;
-  File &quot;selenium\webdriver\firefox\webdriver.pyc&quot;, line 39, in &lt;module&gt;
-  File &quot;selenium\webdriver\remote\webdriver.pyc&quot;, line 25, in &lt;module&gt;
-  File &quot;selenium\webdriver\remote\webelement.pyc&quot;, line 40, in &lt;module&gt;
-  File &quot;pkgutil.pyc&quot;, line 591, in get_data
-IOError: [Errno 2] No such file or directory:&apos;selenium\\webdriver\\remote\\getAttribute.js&apos;
-</code></pre>解决方法：步骤1：修改webelement.py<br>它的位置C:\Python34\Lib\site-packages\selenium\webdriver\remote<pre><code>import sys
-frozen = getattr(sys, &apos;frozen&apos;, &apos;&apos;)
-if not frozen:
-    getAttribute_js = pkgutil.get_data(__package__, &apos;getAttribute.js&apos;).decode(&apos;utf8&apos;)
-    isDisplayed_js = pkgutil.get_data(__package__, &apos;isDisplayed.js&apos;).decode(&apos;utf8&apos;)
-else:
-    approot = os.path.dirname(sys.executable)
-    getAttribute_js = open(os.path.join(approot, &apos;getAttribute.js&apos;), &apos;rb&apos;).read().decode(&apos;utf8&apos;)
-    isDisplayed_js = open(os.path.join(approot, &apos;isDisplayed.js&apos;), &apos;rb&apos;).read().decode(&apos;utf8&apos;)
-</code></pre>步骤2，在你的setup.py 中添加代码:<pre><code>setup(
-    data_files=[(&quot;&quot;,[(&apos;C:\Python34\Lib\site-packages\selenium\webdriver\\remote\getAttribute.js&apos;),(&apos;C:\Python34\Lib\site-packages\selenium\webdriver\\remote\isDisplayed.js&apos;)])],
-    console=[{&quot;script&quot;: &quot;test_erp.py&quot;}],
-    options=options,
-    zipfile=None
-)
-</code></pre></li>
-</ol>
-
-          
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/02/10/selenium-note-1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -518,7 +465,9 @@ else:
     
 
     
-
+    <div>
+      
+    </div>
     <footer class="post-footer">
       
 
@@ -698,16 +647,18 @@ else:
       
         
           
-            <h2 id="linux指定python3为默认解释器版本"><a href="#linux指定python3为默认解释器版本" class="headerlink" title="linux指定python3为默认解释器版本"></a>linux指定python3为默认解释器版本</h2><p>因为centos自带Python2，安装python3后，把 python 软链接重命名</p>
-<pre><code>mv /usr/bin/python /usr/bin/python.bak 
-</code></pre><p>将python链接至python3 </p>
-<pre><code>ln -s /usr/local/python3/bin/python3 /usr/bin/python
-</code></pre><p>因为yum需要python2执行，修改yum</p>
-<pre><code>vi /usr/bin/yum
-vi /usr/libexec/urlgrabber-ext-down
-</code></pre><p>把#! /usr/bin/python修改为#! /usr/bin/python2</p>
-
-          
+          linux指定python3为默认解释器版本因为centos自带Python2，安装python3后，把 python 软链接重命名
+mv /usr/bin/python /usr/bin/python.bak 
+将python链接至python3 
+ln -s /usr/local/python3
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/12/27/linux-default-python/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -720,7 +671,9 @@ vi /usr/libexec/urlgrabber-ext-down
     
 
     
-
+    <div>
+      
+    </div>
     <footer class="post-footer">
       
 
@@ -900,38 +853,20 @@ vi /usr/libexec/urlgrabber-ext-down
       
         
           
-            <h2 id="python3的安装"><a href="#python3的安装" class="headerlink" title="python3的安装"></a>python3的安装</h2><p>下载python3</p>
-<pre><code>wget https://www.python.org/ftp/python/3.5.4/Python-3.5.4.tgz
-</code></pre><p>解压</p>
-<pre><code>tar -xf Python-3.5.4.tgz
-</code></pre><p>make前的预安装依赖</p>
-<pre><code>yum -y install zlib zlib-devel
-yum -y install bzip2 bzip2-devel
-yum -y install ncurses ncurses-devel
-yum -y install readline readline-devel
-yum -y install openssl openssl-devel
-yum -y install openssl-static
-yum -y install xz lzma xz-devel
-yum -y install sqlite sqlite-devel
-yum -y install gdbm gdbm-devel
-yum -y install tk tk-devel
-yum -y install libffi libffi-devel
-</code></pre><p>安装gcc</p>
-<pre><code>yum install gcc
-</code></pre><p>安装python</p>
-<pre><code>./configure --prefix=/usr/local/python3 --enable-shared CFLAGS=-fPIC
-make
-make install
-</code></pre><p>建立软连接</p>
-<pre><code>ln -s /usr/local/python3/bin/python3 /usr/bin/python3
-</code></pre><p>进入源码包 ，拷贝文件</p>
-<pre><code>cd Python-3.5.4/
-cp libpython3.5m.so.1.0 /usr/lib64
-</code></pre><p>到这里python3安装完毕</p>
-<p>顺便给pip3也做个软连接，就成了！</p>
-<pre><code>ln -s /usr/local/python3/bin/pip3 /usr/bin/pip3
-</code></pre>
-          
+          python3的安装下载python3
+wget https://www.python.org/ftp/python/3.5.4/Python-3.5.4.tgz
+解压
+tar -xf Python-3.5.4.tgz
+make前的预安装依赖
+yum -y install zlib zlib-dev
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/12/27/python3-install/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -944,7 +879,9 @@ cp libpython3.5m.so.1.0 /usr/lib64
     
 
     
-
+    <div>
+      
+    </div>
     <footer class="post-footer">
       
 
@@ -1124,33 +1061,19 @@ cp libpython3.5m.so.1.0 /usr/lib64
       
         
           
-            <p>刚刚买了腾讯云，搭建jenkins到服务器，总结如下</p>
-<h2 id="java"><a href="#java" class="headerlink" title="java"></a>java</h2><p>安装最新版本的java</p>
-<pre><code>yum install java
-</code></pre><h2 id="tomcat"><a href="#tomcat" class="headerlink" title="tomcat"></a>tomcat</h2><p>下载</p>
-<pre><code>wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.92/bin/apache-tomcat-7.0.92.tar.gz
-</code></pre><p>新建tomcat存放的目录</p>
-<pre><code>mkdir /usr/local/tomcat
-</code></pre><p>拷贝下载好的 apache-tomcat-7.0.92.tar.gz 到 tomcat目录下</p>
-<pre><code>cp apache-tomcat-7.0.92.tar.gz /usr/local/tomcat/
-</code></pre><p>进入tomcat目录，并解压</p>
-<pre><code>cd /usr/local/tomcat/
-tar -zxvf apache-tomcat-7.0.92.tar.gz
-</code></pre><p>进入解压的tomcat包的bin目录，并启动tomcat</p>
-<pre><code>cd /usr/local/tomcat/apache-tomcat-7.0.92/bin/
-./startup.sh
-</code></pre><h2 id="jenkins"><a href="#jenkins" class="headerlink" title="jenkins"></a>jenkins</h2><p>下载</p>
-<pre><code>wget http://mirrors.tuna.tsinghua.edu.cn/jenkins/redhat/jenkins-2.156-1.1.noarch.rpm
-</code></pre><p>安装</p>
-<pre><code>sudo rpm -ih jenkins-2.156-1.1.noarch.rpm
-</code></pre><p>启动 jenkins</p>
-<pre><code>sudo service jenkins start
-</code></pre><p>修改user 和port</p>
-<pre><code>vi /etc/sysconfig/jenkins
-</code></pre><p>获取密码</p>
-<pre><code>cat /var/lib/jenkins/secrets/initialAdminPassword
-</code></pre>
-          
+          刚刚买了腾讯云，搭建jenkins到服务器，总结如下
+java安装最新版本的java
+yum install java
+tomcat下载
+wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.92/bin/apach
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/12/27/jenkins/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1163,7 +1086,9 @@ tar -zxvf apache-tomcat-7.0.92.tar.gz
     
 
     
-
+    <div>
+      
+    </div>
     <footer class="post-footer">
       
 
@@ -1343,41 +1268,18 @@ tar -zxvf apache-tomcat-7.0.92.tar.gz
       
         
           
-            <h1 id="解决git冲突问题"><a href="#解决git冲突问题" class="headerlink" title="解决git冲突问题"></a>解决git冲突问题</h1><p>在提交测试组周报的过程中，由于git没有svn锁的机制，成员a在pull后，修改文件commit，接着push,报错如下：</p>
-<pre><code>$ git push
+          解决git冲突问题在提交测试组周报的过程中，由于git没有svn锁的机制，成员a在pull后，修改文件commit，接着push,报错如下：
+$ git push
 To 172.16.250.242:yangxiaolong/weeklyReport.git
- ! [rejected]        master -&gt; master (non-fast-forward)
-error: failed to push some refs to &apos;git@172.16.250.242:yangxiaolong/weeklyReport.git&apos;
-hint: Updates were rejected because the tip of your current branch is behind
-hint: its remote counterpart. Integrate the remote changes (e.g.
-hint: &apos;git pull ...&apos;) before pushing again.
-hint: See the &apos;Note about fast-forwards&apos; in &apos;git push --help&apos; for details.
-</code></pre><p>原因是在成员a push之前有别的成员b已经有了新的push，此时成员a对于同一个文件的修改发生了冲突问题<br>要解决这个问题，我们需要把文件回退到之前的版本（回退意味着此次修改内容丢失，请做好备份），重新pull，编辑文件后commit 接着push</p>
-<p>使用git log 查看日志</p>
-<pre><code>$ git log
-commit 6a8fd82942dc32805fe156f8800d4398f9330ea4 (HEAD -&gt; master)
-Author: “henryyang0820git config --global user.email “y1045033116@qq.com &lt;1045033116@qq.com&gt;
-Date:   Mon Jun 25 10:47:00 2018 +0800
-
-杨晓龙提交周报
-
-commit 50b5dfedbcedff257e2b2cf6ccd047975a146fef
-Author: chengbeiyang &lt;chengbeiyang@bravolinks.cn&gt;
-Date:   Mon Jun 25 10:18:09 2018 +0800
-
-chengbeiyang
-
-commit 053ee3c355fab2e4c0a6d9b0f379ff5e1625fa91 (origin/real)
-Author: 翟松方 &lt;zhaisongfang@bravolinks.cn&gt;
-Date:   Mon Jun 25 10:08:13 2018 +0800
-
-scm20180625
-</code></pre><p>查看日志HEAD -&gt; master, 得知当前的commit需要回退一个版本</p>
-<pre><code>git reset --hard HEAD^
-在Git中，用HEAD表示当前版本，上一个版本就是HEAD^，上上一个版本就是HEAD^^，依次类推
-</code></pre><p>到这里，我们的文件退回到了上一版本，冲突得到解决。使用git pull拉取最新的版本，接着进行正常的编辑文件，add-commit-push来提交周报即可。</p>
-
-          
+ ! [rejected]       
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/06/25/my-git2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1390,7 +1292,9 @@ scm20180625
     
 
     
-
+    <div>
+      
+    </div>
     <footer class="post-footer">
       
 
@@ -1570,69 +1474,22 @@ scm20180625
       
         
           
-            <h1 id="git的简单操作与周报提交"><a href="#git的简单操作与周报提交" class="headerlink" title="git的简单操作与周报提交"></a>git的简单操作与周报提交</h1><ol>
-<li>让测试组成员熟悉git</li>
-<li>周报的提交</li>
-</ol>
-<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><p>默认已经安装好了git，开通企业gitlab</p>
-<ol>
-<li>在希望保存此周报项目的路径鼠标右键，打开Git Bash Here<br><img src="https://thumbnail0.baidupcs.com/thumbnail/44c45370bf66953dab0259d64a27d885?fid=2753268065-250528-30672624538947&amp;time=1529647200&amp;rt=sh&amp;sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-ruhlNKzNw1XeTJuRgg4vSMnEqfM%3D&amp;expires=8h&amp;chkv=0&amp;chkbd=0&amp;chkpc=&amp;dp-logid=4003638769655179253&amp;dp-callid=0&amp;size=c710_u400&amp;quality=100&amp;vuk=-&amp;ft=video" alt="Git bash here"></li>
-<li>在git bash输入下方命令，建立gitlab周报项目的本地仓库：这时可能需要输入gitlab账户名和密码<pre><code>git clone http://172.16.250.242:8082/yangxiaolong/weeklyReport.git
-</code></pre></li>
-<li>此时，会看到weeklyReport的文件夹出现被clone下来，进入文件夹，打开周报的excel文件进行编辑，结束后保存并关闭<br>现在可以Git bash中 cd weeklyReport(项目文件夹名)，也可以双击文件夹进入，右键打开git bash</li>
-<li><p>git status命令可以查看git库的情况</p>
-<pre><code>git bash
-$ git status
-On branch master
-Your branch is up to date with &apos;origin/master&apos;.
+          git的简单操作与周报提交
+让测试组成员熟悉git
+周报的提交
 
-Changes not staged for commit:
-  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
-  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+流程默认已经安装好了git，开通企业gitlab
 
-  modified:                                   &quot;\350\264\250\351\207\217\346\265\213\350\257\225\344\270\255\345\277\203\345\267\245\344\275\234\350\256\241\345\210\222\345\217\212\346\200\273\347\273\223.xls&quot;
-
-no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
-</code></pre></li>
-<li>git status命令可以让我们时刻掌握仓库当前的状态，上面的命令输出告诉我们，文件被修改过了，但还没有准备提交的修改。<pre><code>git add weeklyReport.xls
-</code></pre>将weeklyReport.xlsx加入git的版本管理（此命令可以用于添加任意文件到git的管理）</li>
-<li><p>同样没有任何输出。在执行第二步git commit之前，我们再运行git status看看当前仓库的状态：</p>
-<pre><code>On branch master
-Your branch is up to date with &apos;origin/master&apos;.
-
-Changes to be committed:
-  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
-
-modified:               &quot;\350\264\250\351\207\217\346\265\213\350\257\225\344\270\255\345\277\203\345\267\245\344\275\234\350\256\241\345\210\222\345\217\212\346\200\273\347\273\223.xls&quot;
-</code></pre></li>
-<li><p>git status告诉我们，将要被提交的修改包括 weeklyReport.xls，下一步，就可以放心地提交了：<br>使用git commit -m “提交时输入的文字”</p>
-<pre><code>git commit -m &quot;某某某提交周报&quot;
-[master e475afc] 某某某提交周报
- 1 file changed, 1 insertion(+)
-</code></pre></li>
-<li><p>提交后，我们再用git status命令看看仓库的当前状态：</p>
-<pre><code>git status
-On branch master
-nothing to commit, working tree clean
-</code></pre><p>Git告诉我们当前没有需要提交的修改。工作目录干净</p>
-</li>
-<li>使用git push命令推送修改到远程库<pre><code>$ git push
-Counting objects: 4, done.
-Delta compression using up to 4 threads.
-Compressing objects: 100% (4/4), done.
-Writing objects: 100% (4/4), 20.34 KiB | 2.03 MiB/s, done.
-Total 4 (delta 1), reused 0 (delta 0)
-</code></pre>另外在修改周报时候，需要先git pull拉取远端仓库的最新数据<pre><code>$ git pull
-remote: Counting objects: 2, done.
-remote: Compressing objects: 100% (1/1), done.
-remote: Total 2 (delta 0), reused 0 (delta 0)[]
-Unpacking objects: 100% (2/2), done.
-From http://172.16.250.242:8082/yangxiaolong/weeklyReport
-   b3ec051..78ee4cd  master     -&gt; origin/master
-</code></pre>之后再进行周报的修改提交操作，git使用的简单介绍到此结束，详细命令可以查看<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">廖雪峰的git教程</a></li>
-</ol>
-
-          
+在希望保存此周报项目的路径鼠标右键，打开Git Bash Here
+在git bash输入下方命令，建立gitlab周报项目的本地仓库：这时可能需要输入gitlab账户名和密码git
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/06/22/weekly-Report/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1645,7 +1502,9 @@ From http://172.16.250.242:8082/yangxiaolong/weeklyReport
     
 
     
-
+    <div>
+      
+    </div>
     <footer class="post-footer">
       
 
@@ -1825,45 +1684,17 @@ From http://172.16.250.242:8082/yangxiaolong/weeklyReport
       
         
           
-            <h1 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h1><p>从去年开始买基金，经常在15点之前在某基金关注基金走势，以此来决定当天是买还是卖。时间一长发现花时间较多，所以决定写个脚本定时将所关注的基金，发送到邮箱里记录到excel中，并通过代码推到github</p>
-<h1 id="脚本实现的功能"><a href="#脚本实现的功能" class="headerlink" title="脚本实现的功能"></a>脚本实现的功能</h1><ol>
-<li>用request请求通过fiddler抓到的某基金查询接口，得到数据<pre><code>url = (&quot; http://****&amp;FCODE=%s&quot; % shortNumber)
-r = requests.get(url, params=None)
-# print(r.json()[&quot;Expansion&quot;])
-today = r.json()[&quot;Expansion&quot;][&quot;GZTIME&quot;][0:10]#只截取到日期，不要时间
-fcode = r.json()[&quot;Expansion&quot;][&quot;FCODE&quot;]
-shortname = r.json()[&quot;Expansion&quot;][&quot;SHORTNAME&quot;]
-yn = r.json()[&quot;Expansion&quot;][&quot;DWJZ&quot;]
-tn = r.json()[&quot;Expansion&quot;][&quot;GZ&quot;]
-upordown = r.json()[&quot;Expansion&quot;][&quot;GSZZL&quot;]
-# print(&quot;_____________________&quot;)
-ex_content = [today, fcode, shortname, yn, tn, upordown]
-</code></pre></li>
-<li>将处理好的数据用openpyxl写入到excel文件中<pre><code>wb = load_workbook(excel_path)
-sheet = wb[&apos;Sheet1&apos;]
-n_coordinate = 0
-for row in sheet.iter_rows():#找到空白行号
-    for cell in row:
-        # print(cell.coordinate, cell.value)
-        if cell.value is not None:
-            n_coordinate = cell.row+1
-# print(n_coordinate)
-for n in range(len(list)):#通过遍历给cell赋值
-    for m in range(len(list[0])):
-        sheet.cell(n_coordinate+n,m+1).value=list[n][m]
-wb.save(excel_path)
-</code></pre></li>
-<li>smtplib,email包等等写邮件发送</li>
-<li>GitPython推excel到github<pre><code>repo = Repo(base_path)
-remote = repo.remote()
-index = repo.index
-index.add([&apos;myfundStatistics.xlsx&apos;])
-index.commit(&apos;pushed by GitPython&apos;)
-remote.push()
-</code></pre><a href="https://github.com/henryyang0820/inquiryFund" target="_blank" rel="noopener">代码链接</a></li>
-</ol>
-
-          
+          目的从去年开始买基金，经常在15点之前在某基金关注基金走势，以此来决定当天是买还是卖。时间一长发现花时间较多，所以决定写个脚本定时将所关注的基金，发送到邮箱里记录到excel中，并通过代码推到github
+脚本实现的功能
+用request请求通过fiddler抓到的某基金查询接口，得到数据url =
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/23/my-fund/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1876,7 +1707,9 @@ remote.push()
     
 
     
-
+    <div>
+      
+    </div>
     <footer class="post-footer">
       
 
@@ -2056,33 +1889,20 @@ remote.push()
       
         
           
-            <h1 id="关于接口测试"><a href="#关于接口测试" class="headerlink" title="关于接口测试"></a>关于接口测试</h1><h4 id="接口测试的意义"><a href="#接口测试的意义" class="headerlink" title="接口测试的意义"></a>接口测试的意义</h4><ol>
-<li><strong>更早的发现问题</strong>：因为更早的发现bug,修复的成本更低。</li>
-<li><strong>缩短产品研发周期</strong>：提早介入发现并解决bug，功能测试时遇到bug减少，缩小项目上线时间。</li>
-<li><strong>发现更底层的问题</strong>。</li>
-</ol>
-<h4 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h4><p>HTTP：是从万维网服务器传输超文本到本地浏览器的传输协议，<strong>基于TCP/IP通讯协议来传递数据</strong>。<br>HTTP协议工作于客户端——服务端架构上。浏览器作为HTTP客户端通过URL向HTTP服务端（即Web服务器）发送请求。</p>
-<h4 id="HTTP协议的主要特点"><a href="#HTTP协议的主要特点" class="headerlink" title="HTTP协议的主要特点"></a>HTTP协议的主要特点</h4><ol>
-<li><strong>无连接</strong>：限制每次连接只处理一个请求。服务器处理完客户的请求，并受到客户的应答后，即断开连接。</li>
-<li><strong>媒体独立</strong>：只要客户端和服务器知道如何处理数据内容，任何类型的数据都可以通过HTTP发送。</li>
-<li><strong>无状态</strong>：HTTP协议是无状态协议。对于事务处理没有记忆能力。</li>
-</ol>
-<h4 id="HTTP状态码"><a href="#HTTP状态码" class="headerlink" title="HTTP状态码"></a>HTTP状态码</h4><p>共分为五种类型：</p>
-<ol>
-<li>1xx：信息，服务器收到请求，需要请求和继续执行操作。</li>
-<li>2xx：成功，操作被成功接受并处理。</li>
-<li>3xx：重定向，需要进一步的操作已完成请求。</li>
-<li>4xx：客户端错误，请求包含语法错误或无法完成请求。</li>
-<li>5xx：服务器错误，服务器在处理请求的过程中发生了错误。</li>
-</ol>
-<h4 id="接口测试工具的不足"><a href="#接口测试工具的不足" class="headerlink" title="接口测试工具的不足"></a>接口测试工具的不足</h4><ol>
-<li><strong>测试数据不可控制</strong></li>
-<li><strong>无法测试加密接口</strong></li>
-<li><strong>扩展能力不足</strong></li>
-</ol>
-<p>自动化接口测试框架：Requests+unittest+HTMLTestRunner+ddt</p>
+          关于接口测试接口测试的意义
+更早的发现问题：因为更早的发现bug,修复的成本更低。
+缩短产品研发周期：提早介入发现并解决bug，功能测试时遇到bug减少，缩小项目上线时间。
+发现更底层的问题。
 
-          
+HTTPHTTP：是从万维网服务器传输超文本到本地浏览器的传输协议，基于TCP/IP通讯协议来传递数据。
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/13/my-interface-test/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2095,7 +1915,9 @@ remote.push()
     
 
     
-
+    <div>
+      
+    </div>
     <footer class="post-footer">
       
 
@@ -2275,13 +2097,16 @@ remote.push()
       
         
           
-            <h1 id="python3和2区别笔记"><a href="#python3和2区别笔记" class="headerlink" title="python3和2区别笔记"></a>python3和2区别笔记</h1><ol>
-<li>在爬虫中遇到了写入str乱码的问题，python2中str转码要用到decode（）和encode（）对gbk和utf-8来转换，而3中str没有这两个方法，所议读取时直接指定编码即可：<pre><code>with open(&quot;a.txt&quot;, &apos;a&apos;,encoding=&apos;utf-8&apos;) as fp:
-    fp.write((item[&apos;name&apos;] +&quot;\n&quot;))
-</code></pre></li>
-</ol>
-
-          
+          python3和2区别笔记
+在爬虫中遇到了写入str乱码的问题，python2中str转码要用到decode（）和encode（）对gbk和utf-8来转换，而3中str没有这两个方法，所议读取时直接指定编码即可：with open(&quot;a.txt&quot;, &apos;a&apos;,
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/02/05/python3-diff-2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2294,7 +2119,9 @@ remote.push()
     
 
     
-
+    <div>
+      
+    </div>
     <footer class="post-footer">
       
 
@@ -2474,19 +2301,22 @@ remote.push()
       
         
           
-            <h1 id="termux"><a href="#termux" class="headerlink" title="termux"></a>termux</h1><p> termux是一款运行在安卓5.0以上的linux虚拟机app</p>
-<h4 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h4><ul>
-<li>应用市场下载F-Droid</li>
-<li>在F-Droid中搜索下载termux</li>
-<li>进入app后输入 apt upgrage和apt update更新</li>
-<li>apt install python</li>
-<li>apt install vim</li>
-<li>apt install git</li>
-<li>apt install openssl ssh</li>
-</ul>
-<p>接下来配置好github,clone下来我的基金查询代码，就可以在手机上运行了</p>
-
-          
+          termux termux是一款运行在安卓5.0以上的linux虚拟机app
+安装步骤
+应用市场下载F-Droid
+在F-Droid中搜索下载termux
+进入app后输入 apt upgrage和apt update更新
+apt install python
+apt install vim
+apt
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/26/termux/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2499,7 +2329,9 @@ remote.push()
     
 
     
-
+    <div>
+      
+    </div>
     <footer class="post-footer">
       
 

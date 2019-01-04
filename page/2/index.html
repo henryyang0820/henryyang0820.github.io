@@ -439,17 +439,17 @@
       
         
           
-            <h1 id="selenium笔记"><a href="#selenium笔记" class="headerlink" title="selenium笔记"></a>selenium笔记</h1><p>在写脚本过程中，首先登录系统，接着通过driver.execute_script(js)打开新标签页，测试用例执行结束后在tearDown()中：</p>
-<pre><code>self.driver.switch_to.window(self.driver.window_handles[1])
-self.driver.close()
-</code></pre><p>关闭了当前的标签页，后续代码本应再次执行driver.execute_script(js)，但是却跳过直接执行了tearDown（）,对代码try-catch后，异常如下：</p>
-<pre><code>no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=62.0.3202.75)
-  (Driver info: chromedriver=2.31.488763 (092de99f48a300323ecf8c2a4e2e7cab51de5ba8),platform=Windows NT 6.1.7601 SP1 x86_64)
-</code></pre><p>猜想是driver被关闭焦点丢失，果然，在switch_to.widow到当前标签页获取焦点后，后续代码得以正常执行。<br>经验：焦点很重要。</p>
-
-          
+          selenium笔记在写脚本过程中，首先登录系统，接着通过driver.execute_script(js)打开新标签页，测试用例执行结束后在tearDown()中：
+self.driver.switch_to.window(self.driver.window_handles[1])
+self.d
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/08/selenium-note/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -462,7 +462,9 @@ from unknown error: web view not found
     
 
     
-
+    <div>
+      
+    </div>
     <footer class="post-footer">
       
 
