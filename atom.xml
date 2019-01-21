@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-12-29T09:12:15.777Z</updated>
+  <updated>2019-01-21T09:51:29.449Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>testoffer</title>
+    <link href="http://yoursite.com/2019/01/21/testoffer/"/>
+    <id>http://yoursite.com/2019/01/21/testoffer/</id>
+    <published>2019-01-21T09:50:26.000Z</published>
+    <updated>2019-01-21T09:51:29.449Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="招人了！"><a href="#招人了！" class="headerlink" title="招人了！"></a>招人了！</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;招人了！&quot;&gt;&lt;a href=&quot;#招人了！&quot; class=&quot;headerlink&quot; title=&quot;招人了！&quot;&gt;&lt;/a&gt;招人了！&lt;/h2&gt;
+      
+    
+    </summary>
+    
+      <category term="offer" scheme="http://yoursite.com/categories/offer/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>linux指定python3为默认解释器版本</title>
