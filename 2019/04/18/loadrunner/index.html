@@ -81,13 +81,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="只能永远把艰辛的劳动看作是生命的必要；即使没有收获的指望，也心平气静地继续耕种。">
-<meta property="og:url" content="http://yoursite.com/tags/jenkins/index.html">
+<meta name="description" content="loadrunner遇到的坑 在登陆的时候需要获取验证，用到web_reg_save_param函数，无论参数怎么调整也无法获取验证码，各种搜索终于查到问题所在：1、web_reg_save_param必须在获取返回值的操作前面注册，在获取返回值的操作后面使用 2、保存参数最大不能超过256字节，如果超过256字节请使用int web_set_max_html_param_len (const c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="loadrunner">
+<meta property="og:url" content="http://yoursite.com/2019/04/18/loadrunner/index.html">
 <meta property="og:site_name" content="只能永远把艰辛的劳动看作是生命的必要；即使没有收获的指望，也心平气静地继续耕种。">
+<meta property="og:description" content="loadrunner遇到的坑 在登陆的时候需要获取验证，用到web_reg_save_param函数，无论参数怎么调整也无法获取验证码，各种搜索终于查到问题所在：1、web_reg_save_param必须在获取返回值的操作前面注册，在获取返回值的操作后面使用 2、保存参数最大不能超过256字节，如果超过256字节请使用int web_set_max_html_param_len (const c">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-18T10:07:36.651Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="只能永远把艰辛的劳动看作是生命的必要；即使没有收获的指望，也心平气静地继续耕种。">
+<meta name="twitter:title" content="loadrunner">
+<meta name="twitter:description" content="loadrunner遇到的坑 在登陆的时候需要获取验证，用到web_reg_save_param函数，无论参数怎么调整也无法获取验证码，各种搜索终于查到问题所在：1、web_reg_save_param必须在获取返回值的操作前面注册，在获取返回值的操作后面使用 2、保存参数最大不能超过256字节，如果超过256字节请使用int web_set_max_html_param_len (const c">
 
 
 
@@ -117,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/jenkins/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/04/18/loadrunner/"/>
 
 
 
 
 
-  <title>标签: jenkins | 只能永远把艰辛的劳动看作是生命的必要；即使没有收获的指望，也心平气静地继续耕种。</title>
+  <title>loadrunner | 只能永远把艰辛的劳动看作是生命的必要；即使没有收获的指望，也心平气静地继续耕种。</title>
   
 
 
@@ -152,7 +156,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -290,54 +294,249 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>jenkins<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/18/loadrunner/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="henryyang0820">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="只能永远把艰辛的劳动看作是生命的必要；即使没有收获的指望，也心平气静地继续耕种。">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/12/27/jenkins/" itemprop="url">
-              
-                <span itemprop="name">linux搭建jenkins</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">loadrunner</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-12-27T13:58:12+08:00"
-              content="2018-12-27" >
-          12-27
-        </time>
-      </div>
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-18T17:58:37+08:00">
+                2019-04-18
+              </time>
+            
 
-    </header>
-  </article>
+            
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-18T18:07:36+08:00">
+                2019-04-18
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术相关/" itemprop="url" rel="index">
+                    <span itemprop="name">技术相关</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/18/loadrunner/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/18/loadrunner/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/04/18/loadrunner/" class="leancloud_visitors" data-flag-title="loadrunner">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  231字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="loadrunner遇到的坑"><a href="#loadrunner遇到的坑" class="headerlink" title="loadrunner遇到的坑"></a>loadrunner遇到的坑</h1><ul>
+<li>在登陆的时候需要获取验证，用到web_reg_save_param函数，无论参数怎么调整也无法获取验证码，各种搜索终于查到问题所在：<pre><code>1、web_reg_save_param必须在获取返回值的操作前面注册，在获取返回值的操作后面使用
+2、保存参数最大不能超过256字节，如果超过256字节请使用int web_set_max_html_param_len (const char *length )函数扩大参数保存范围
+例如：web_set_max_html_param_len (&quot;1024&quot;); //扩大参数最大保存范围为1024字节
+3、LB和RB后面跟着&quot;/ic&quot;,则边界大小写都匹配(不加，也就是默认是大小写敏感的)
+例如：web_reg_save_param(&quot;IsRight&quot;,&quot;LB/ic=cache-control: private\r\n\r\n&quot;,&quot;RB/ic=|&quot;,LAST);
+</code></pre></li>
+</ul>
+<p>坑在了第一条。。。<br>之前自己想当然的认为get登陆url在用web_reg_save_param获取验证码，然后再使用，先入为主要不得</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">
+            -------------本文结束
+            <i class="fa fa-paw"></i>
+            感谢您的阅读-------------
+        </div>
+    
+</div>
+
+      
+    </div>
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/21/testoffer/" rel="next" title="testoffer">
+                <i class="fa fa-chevron-left"></i> testoffer
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -345,6 +544,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -365,8 +571,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -453,6 +668,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#loadrunner遇到的坑"><span class="nav-number">1.</span> <span class="nav-text">loadrunner遇到的坑</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -593,6 +824,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
