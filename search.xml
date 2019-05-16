@@ -9,14 +9,6 @@
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[testoffer]]></title>
-    <url>%2F2019%2F01%2F21%2Ftestoffer%2F</url>
-    <content type="text"><![CDATA[招人了！]]></content>
-      <categories>
-        <category>工作</category>
-      </categories>
-  </entry>
-  <entry>
     <title><![CDATA[linux指定python3为默认解释器版本]]></title>
     <url>%2F2018%2F12%2F27%2Flinux-default-python%2F</url>
     <content type="text"><![CDATA[linux指定python3为默认解释器版本因为centos自带Python2，安装python3后，把 python 软链接重命名 mv /usr/bin/python /usr/bin/python.bak 将python链接至python3 ln -s /usr/local/python3/bin/python3 /usr/bin/python 因为yum需要python2执行，修改yum vi /usr/bin/yum vi /usr/libexec/urlgrabber-ext-down 把#! /usr/bin/python修改为#! /usr/bin/python2]]></content>

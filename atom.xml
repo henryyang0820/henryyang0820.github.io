@@ -41,29 +41,6 @@
   </entry>
   
   <entry>
-    <title>testoffer</title>
-    <link href="http://yoursite.com/2019/01/21/testoffer/"/>
-    <id>http://yoursite.com/2019/01/21/testoffer/</id>
-    <published>2019-01-21T09:50:26.000Z</published>
-    <updated>2019-01-21T10:00:08.040Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="招人了！"><a href="#招人了！" class="headerlink" title="招人了！"></a>招人了！</h2>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;招人了！&quot;&gt;&lt;a href=&quot;#招人了！&quot; class=&quot;headerlink&quot; title=&quot;招人了！&quot;&gt;&lt;/a&gt;招人了！&lt;/h2&gt;
-      
-    
-    </summary>
-    
-      <category term="工作" scheme="http://yoursite.com/categories/%E5%B7%A5%E4%BD%9C/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>linux指定python3为默认解释器版本</title>
     <link href="http://yoursite.com/2018/12/27/linux-default-python/"/>
     <id>http://yoursite.com/2018/12/27/linux-default-python/</id>
